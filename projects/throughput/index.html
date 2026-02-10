@@ -63,7 +63,7 @@
   <div class="overlay-control right">
     <div class="stepper">
       <button data-slider="latency" data-dir="-1">-</button>
-      <span class="stepper-center"><span class="stepper-val" id="latencyVal">3</span></span>
+      <span class="stepper-center"><span class="stepper-val" id="latencyVal">2</span></span>
       <button data-slider="latency" data-dir="1">+</button>
     </div>
     <label>PRs / eng / day</label>
@@ -71,7 +71,7 @@
 </div>
 <!-- Hidden range inputs to store values -->
 <input type="range" id="productivity" min="1" max="10" value="1" step="1" style="display:none">
-<input type="range" id="latency" min="1" max="10" value="3" step="1" style="display:none">
+<input type="range" id="latency" min="1" max="10" value="2" step="1" style="display:none">
 <script>
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
