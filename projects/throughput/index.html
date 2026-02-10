@@ -6,9 +6,16 @@
 <title>PR Throughput Pipeline</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0f1117; color: #e1e4e8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; height: 100vh; overflow: hidden; }
+  body { background: #0f1117; color: #e1e4e8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: flex; height: 100vh; overflow: hidden; }
+  .sidebar { width: 280px; padding: 32px 24px; border-right: 1px solid #21262d; display: flex; flex-direction: column; gap: 16px; flex-shrink: 0; justify-content: center; }
+  .sidebar h1 { font-size: 22px; font-weight: 700; color: #c9d1d9; }
+  .sidebar p { font-size: 14px; color: #8b949e; line-height: 1.6; }
+  .sidebar a { color: #58a6ff; text-decoration: none; font-size: 14px; }
+  .sidebar a:hover { text-decoration: underline; }
+  .main { flex: 1; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
   button { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; border-radius: 6px; padding: 4px 14px; font-size: 13px; cursor: pointer; }
   button:hover { background: #30363d; }
+  .stepper button:hover { background: #21262d; }
   .throughput { display: flex; align-items: baseline; gap: 10px; margin: 12px 0 8px; justify-content: center; }
   .throughput-label { font-size: 18px; color: #8b949e; letter-spacing: 1px; }
   .throughput #statThroughput { font-size: 64px; font-weight: 700; }
@@ -29,6 +36,13 @@
 </style>
 </head>
 <body>
+<div class="sidebar">
+  <h1>PR Throughput Simulator</h1>
+  <p>Visualize how Pull Requests flow through a software team.</p>
+  <p>Adjust PR production and review speed to see how bottlenecks form. When production outpaces review, throughput is capped, and the backlog grows.</p>
+  <a href="https://github.com/steveinflow/throughput">View on GitHub</a>
+</div>
+<div class="main">
 <div class="throughput">
   <span class="throughput-label">Throughput:</span>
   <span id="statThroughput">0</span> <span class="throughput-unit">PRs/day</span>
@@ -41,16 +55,18 @@
   <div class="overlay-control left">
     <div class="stepper">
       <button data-slider="productivity" data-dir="-1">-</button>
-      <span class="stepper-center"><span class="stepper-val" id="productivityVal">1</span><span class="stepper-unit">PRs / day</span></span>
+      <span class="stepper-center"><span class="stepper-val" id="productivityVal">1</span></span>
       <button data-slider="productivity" data-dir="1">+</button>
     </div>
+    <label>PRs / eng /day</label>
   </div>
   <div class="overlay-control right">
     <div class="stepper">
       <button data-slider="latency" data-dir="-1">-</button>
-      <span class="stepper-center"><span class="stepper-val" id="latencyVal">1</span><span class="stepper-unit">PRs / day</span></span>
+      <span class="stepper-center"><span class="stepper-val" id="latencyVal">1</span></span>
       <button data-slider="latency" data-dir="1">+</button>
     </div>
+    <label>PRs / eng /day</label>
   </div>
 </div>
 <!-- Hidden range inputs to store values -->
@@ -314,13 +330,13 @@ function draw() {
   ctx.fillStyle = '#58a6ff';
   ctx.font = '600 20px -apple-system, BlinkMacSystemFont, sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('Producers', 10 + zoneW / 2, 42);
+  ctx.fillText('Producing', 10 + zoneW / 2, 42);
 
   ctx.fillStyle = '#ffa657';
   ctx.fillText('Blocked', qCenterX, 42);
 
   ctx.fillStyle = '#7ee787';
-  ctx.fillText('Reviewers', W - 10 - zoneW / 2, 42);
+  ctx.fillText('Reviewing', W - 10 - zoneW / 2, 42);
 
   // Flow arrows
   ctx.strokeStyle = '#30363d';
@@ -435,5 +451,6 @@ function loop() {
 lastRealTime = performance.now();
 loop();
 </script>
+</div>
 </body>
 </html>
