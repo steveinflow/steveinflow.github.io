@@ -299,6 +299,9 @@ function updateExpectedThroughput() {
 }
 sliders.productivity.addEventListener('input', () => { vals.productivity.textContent = sliders.productivity.value; updateExpectedThroughput(); });
 sliders.latency.addEventListener('input', () => { vals.latency.textContent = sliders.latency.value; updateExpectedThroughput(); });
+// Sync displayed values with actual input values (browser may restore cached values on refresh)
+vals.productivity.textContent = sliders.productivity.value;
+vals.latency.textContent = sliders.latency.value;
 updateExpectedThroughput();
 
 function draw() {
