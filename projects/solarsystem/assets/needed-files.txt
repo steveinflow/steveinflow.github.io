@@ -1,0 +1,7 @@
+monster-truck.png
+car.png
+crush.mp3
+jump.mp3
+engine.mp3
+powerup.mp3
+music.mp3 
