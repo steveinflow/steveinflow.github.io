@@ -6,12 +6,18 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <div class="auth-bar">
-    <div id="auth_status">
-      <button id="sign_in_button" class="auth-button">Sign in with Google</button>
+  <div id="sign_in_page" class="sign-in-page">
+    <div class="sign-in-container">
+      <h1 class="sign-in-title">Focus Sessions</h1>
+      <p class="sign-in-subtitle">Track your productivity with timed focus sessions</p>
+      <button id="sign_in_button" class="sign-in-button">Sign in with Google</button>
     </div>
   </div>
-  <h1 class="page-title">Focus Sessions</h1>
+  <div id="app_container" class="app-container hidden">
+    <div class="auth-bar">
+      <div id="auth_status"></div>
+    </div>
+    <h1 class="page-title">Focus Sessions</h1>
   <div class="main-layout">
     <!-- Left side - Timer controls -->
     <div class="timer-section">
@@ -60,6 +66,7 @@
       <div id="history_list"></div>
       <div id="history_graph"></div>
     </div>
+  </div>
   </div>
   <div id="note_modal" class="modal">
     <div class="modal-content">
