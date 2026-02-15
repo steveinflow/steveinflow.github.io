@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sessions</title>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <div class="auth-bar">
+    <div id="auth_status">
+      <button id="sign_in_button" class="auth-button">Sign in with Google</button>
+    </div>
+  </div>
+  <h1 class="page-title">Focus Sessions</h1>
+  <div class="main-layout">
+    <!-- Left side - Timer controls -->
+    <div class="timer-section">
+      <svg class="arrow" id="up_button" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4L4 12H20L12 4Z" fill="currentColor"/>
+      </svg>
+      <div id="timer"></div>
+      <svg class="arrow" id="down_button" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 20L4 12H20L12 20Z" fill="currentColor"/>
+      </svg>
+      <p id="tags"></p>
+      <div class="timer-controls">
+        <button class="timer_control" id="add_five_button">+5:00</button>
+        <button class="timer_control" id="pause_play_button">Begin</button>
+        <button class="timer_control" id="reset_button">Reset</button>
+        <button class="timer_control" id="previous_button">Previous</button>
+      </div>
+      <h1 class="total" id='today_total'></h1>
+      <h1 class="total" id='week_total'></h1>
+    </div>
+
+    <!-- Right side - History -->
+    <div class="history-section">
+      <div class="history-header">
+        <select id="time-period-selector" class="time-period-selector">
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+        <div class="range-selector">
+          <label class="range-option">
+            <input type="radio" name="range" value="recent" checked>
+            Recent
+          </label>
+          <label class="range-option">
+            <input type="radio" name="range" value="all">
+            All
+          </label>
+        </div>
+        <div class="tag-filter-container">
+          <input type="text" id="tag-filter" placeholder="Filter by tags (comma-separated)" autocomplete="off">
+          <div id="tag-dropdown" class="tag-dropdown"></div>
+        </div>
+      </div>
+      <div id="history_list"></div>
+      <div id="history_graph"></div>
+    </div>
+  </div>
+  <div id="note_modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="note_modal_title">Edit Note</h2>
+            <span id="note_modal_close" class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <textarea id="note_input" class="modal-control" placeholder="Enter note for this day" rows="4"></textarea>
+            <button id="note_modal_confirm" class="modal-control">Save Note</button>
+        </div>
+    </div>
+  </div>
+  <div id="previous_modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add Previous Session</h2>
+            <span id="modal_close" class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <input type="text" id="datepicker_prompt" class="modal-control" placeholder="Select date">
+            <input type="text" id="previous_tags" class="modal-control" placeholder="Enter tags">
+            <button id="modal_confirm" class="modal-control">Add Session</button>
+        </div>
+    </div>
+  </div>
+  <script src="bundle.js"></script>
+</body>
+</html>
