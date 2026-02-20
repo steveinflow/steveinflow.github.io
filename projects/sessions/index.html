@@ -14,7 +14,17 @@
   <link rel="apple-touch-icon" href="icons/icon-180.png">
 </head>
 <body>
-  <div id="sign_in_page" class="sign-in-page">
+  <div id="loading_screen" class="loading-screen">
+    <div class="loading-content">
+      <h1 class="loading-title">Focus Sessions</h1>
+      <div class="loading-spinner">
+        <div class="spinner-dot"></div>
+        <div class="spinner-dot"></div>
+        <div class="spinner-dot"></div>
+      </div>
+    </div>
+  </div>
+  <div id="sign_in_page" class="sign-in-page hidden">
     <div class="sign-in-container">
       <h1 class="sign-in-title">Focus Sessions</h1>
       <p class="sign-in-subtitle">Track your productivity with timed focus sessions</p>
@@ -23,7 +33,7 @@
   </div>
   <div id="app_container" class="app-container hidden">
     <div class="auth-bar">
-      <span class="version">v1.0.0</span>
+      <span class="version">v1.1.0</span>
       <div id="auth_status"></div>
     </div>
     <h1 class="page-title">Focus Sessions</h1>
@@ -71,6 +81,9 @@
           <input type="text" id="tag-filter" placeholder="Filter by tags (comma-separated)" autocomplete="off">
           <div id="tag-dropdown" class="tag-dropdown"></div>
         </div>
+        <div class="highlight-search-container">
+          <input type="text" id="highlight-search" placeholder="Search highlights..." autocomplete="off">
+        </div>
       </div>
       <div id="history_list"></div>
       <div id="history_graph"></div>
@@ -102,6 +115,6 @@
         </div>
     </div>
   </div>
-  <script src="bundle.js?v=5"></script>
+  <script src="bundle.js?v=6"></script>
 </body>
 </html>
