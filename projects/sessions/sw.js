@@ -33,6 +33,26 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Handle notification action clicks (pause/resume, reset, +5:00)
+self.addEventListener('notificationclick', (event) => {
+  const action = event.action;
+  event.notification.close();
+
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clients => {
+      if (clients.length > 0) {
+        const client = clients[0];
+        if (action) {
+          client.postMessage({ type: 'notification-action', action: action });
+        }
+        return client.focus();
+      } else {
+        return self.clients.openWindow('/');
+      }
+    })
+  );
+});
+
 // Fetch: network-first for API/Firebase, cache-first for static assets
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
