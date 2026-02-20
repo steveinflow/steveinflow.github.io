@@ -47,7 +47,7 @@ self.addEventListener('notificationclick', (event) => {
         }
         return client.focus();
       } else {
-        return self.clients.openWindow('/');
+        return self.clients.openWindow(self.registration.scope);
       }
     })
   );
